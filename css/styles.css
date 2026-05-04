@@ -68,6 +68,83 @@ body {
     margin-bottom: 1rem;
 }
 
+.event-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.event-table th {
+    background-color: #6c63ff;
+    color: white;
+    padding: 0.75rem 1rem;
+    text-align: left;
+}
+
+.event-table td {
+    background-color: white;
+    padding: 0.75rem 1rem;
+}
+
+.event-table tr {
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.register-event-btn {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.register-event-btn .btn {
+    background-color: gold;
+    color: black;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.speaker-register-board {
+    background-color: #6c63ff;
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+}
+
+.speaker-register-board form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+    color: white;
+}
+
+.form-group input, .form-group textarea {
+    padding: 0.6rem 0.8rem;
+    border: none;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    background-color: white;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
 .btn {
     display: inline-block;
     background-color: #ffd166;
