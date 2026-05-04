@@ -1,0 +1,45 @@
+.account-page {
+    padding: 2rem;
+}
+
+.account-card {
+    background-color: #6c63ff;
+    border-radius: 24px;
+    padding: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
+.account-avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: cyan;
+    flex-shrink: 0;
+}
+
+.account-title {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+
+.account-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.account-field {
+    background-color: white;
+    border-radius: 999px;
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    color: black;
+}
+
+.field-label {
+    font-weight: bold;
+}

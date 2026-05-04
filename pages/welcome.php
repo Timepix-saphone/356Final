@@ -51,7 +51,7 @@ sessionTimer();
             <li> <a href="#"> Organizer Home </a> </li>
         </ul>
     </div>
-    
+
     <main class="main-content">
             <section class="hero-section">
                 <h2>Welcome Page</h2>
@@ -65,25 +65,25 @@ sessionTimer();
                 <article class="dashboard-card">
                     <h3>Events</h3>
                     <p>Browse or register for upcoming events.</p>
-                    <a href="#" class="btn">Go to Events</a>
+                    <a href="" class="btn">Go to Events</a>
                 </article>
 
                 <article class="dashboard-card">
                     <h3>Observe</h3>
                     <p>Access attendee-facing event views and updates.</p>
-                    <a href="pages/observerHome.php" class="btn">Go to Observe</a>
+                    <a href="observerHome.php" class="btn">Go to Observe</a>
                 </article>
 
                 <article class="dashboard-card">
                     <h3>Speakers</h3>
                     <p>Register as a speaker and manage proposal information.</p>
-                    <a href="pages/speakerHome.php" class="btn">Go to Speakers</a>
+                    <a href="speakerHome.php" class="btn">Go to Speakers</a>
                 </article>
 
                 <article class="dashboard-card">
                     <h3>Exhibitors</h3>
                     <p>Create and manage exhibit-related information.</p>
-                    <a href="pages/exhibitorHome.php" class="btn">Go to Exhibitors</a>
+                    <a href="exhibitorHome.php" class="btn">Go to Exhibitors</a>
                 </article>
 
             </section>
