@@ -1,24 +1,20 @@
 <?php
 session_start();
 
-$pageTitle = "Request Form";
+$pageTitle = "Speaker Proposal Register";
 
 require_once '../helpers/checkLogin.php';
 require_once '../helpers/sessionTimer.php';
 require_once '../helpers/header.php';
-require_once '../helpers/formBuilder.php';
 require      '../vendor/autoload.php';
 require_once '../helpers/supabase.php';
-
-$supabase = initializeSupabase();
 
 //UNCOMMENT FOR PRODUCTION
 //checkLogin();
 //sessionTimer();
 
-$proposalTopic = null;
-$proposalTitle = null;
-$proposalDesc = null;
+$supabase = initializeSupabase();
+$message = null;
 
 function sanitize($value) {
     return htmlspecialchars(stripslashes(trim($value)));
@@ -34,37 +30,31 @@ if ($_SESSION['is_speaker']) {
     $event_id = $current_event['event_id'];
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $proposalTopic = sanitize($_POST["topic"]);
-        $proposalTitle = sanitize($_POST["title"]);
-        $proposalDesc = sanitize($_POST["desc"]);
-        
-        if(empty($proposalTopic) || empty($proposalTitle) || empty($proposalDesc)) {
-            $message = "All fields required";
-        }
+        $proposalName  = sanitize($_POST["proposalName"]);
+        $proposalTopic = sanitize($_POST["proposalTopic"]);
+        $proposalDesc  = sanitize($_POST["proposalDescription"]);
 
-        else {
-            try{
-                
+        if (empty($proposalName) || empty($proposalTopic) || empty($proposalDesc)) {
+            $message = "All fields required.";
+        } else {
+            try {
                 $response = $supabase->from('proposal')->insert([
-                    'speaker_id'=> $_SESSION['user_id'],
-                    'event_id' => $event_id,
-                    'proposal_status' => 'Submitted',
-                    'is_approved' => false,
-                    'proposal_topic'=> $proposalTopic,
-                    'proposal_name'=> $proposalTitle,
-                    'proposal_description'=> $proposalDesc
+                    'speaker_id'           => $_SESSION['user_id'],
+                    'event_id'             => $event_id,
+                    'proposal_status'      => 'Submitted',
+                    'is_approved'          => false,
+                    'proposal_name'        => $proposalName,
+                    'proposal_topic'       => $proposalTopic,
+                    'proposal_description' => $proposalDesc
                 ])->execute();
 
-            }
-            catch(Exception $e) {
+                $message = "Proposal submitted successfully!";
+            } catch (Exception $e) {
                 $message = "Error submitting form: " . $e->getMessage();
             }
-
         }
-
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -79,6 +69,7 @@ if ($_SESSION['is_speaker']) {
           type="text/css" rel="stylesheet" />
 </head>
 <body>
+
 <!-- Header -->
 <?php
     if (array_key_exists('username', $_SESSION)) {
@@ -92,8 +83,12 @@ if ($_SESSION['is_speaker']) {
     }
 ?>
 
+
+
+
     <!-- Main page wrapper -->
     <div class="page-container">
+
 
         <!-- Navigation / page intro -->
         <main class="main-content">
@@ -101,46 +96,69 @@ if ($_SESSION['is_speaker']) {
                 
             </section>
 
-            <!-- Main role / feature navigation based on your wireframe -->
-            <section class="dashboard-grid">
+            <!-- Speaker proposal registration form -->
+            <section class="speaker-register-board">
+                
+                <?php if ($message): ?>
+                    <p class="form-message"><?= $message ?></p>
 
-                <article class="dashboard-card">
-                    <form method="POST" action="">
-                        <div class="form-group">
-                            <label for="title">Title: </label>
-                            <input type="text" id="title" name="title" required>
-                        </div>
+                <?php endif; ?>
 
-                        <div class="form-group">
-                            <label for="topic">Topic: </label>
-                            <input type="text" id="topic" name="topic" required>
-                        </div>
+                <form action="" method="POST"> 
+                    <div class="form-group">
+                        <label for="userLastName">Last Name</label>
 
-                        <div class="form-group">
-                            <label for="desc">Description:</label>
-                            <input type="text" id="desc" name="desc" required>
-                        </div>
-                        <button type="submit">Submit Form</button>
-                    </form>
-                </article>
+                        <input type="text" id="userLastName" name="userLastName" required>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="userEmail">Email</label>
+
+                        <input type="email" id="userEmail" name="userEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventName">Event Name</label>
+
+                        <input type="text" id="eventName" name="eventName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="proposalName">Proposal Name</label>
+
+                        <input type="text" id="proposalName" name="proposalName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="proposalTopic">Proposal Topic</label>
+
+                        <input type="text" id="proposalTopic" name="proposalTopic" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="proposalDescription">Proposal Description</label>
+                        
+                        <textarea id="proposalDescription" name="proposalDescription" rows="5" required></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+
+                        <button type="submit" class="btn">Submit Proposal</button>
+                    </div>
+
+                </form>
             </section>
-
             <!-- Placeholder for announcements or future dynamic content -->
             <section class="info-section">
                 
             </section>
         </main>
-
         <!-- Footer -->
         <footer class="site-footer">
             <?php
                 include_once '../helpers/footer.html';
             ?>
-            <h3><?= $message ?></h3>
         </footer>
-
     </div>
-
 </body>
 </html>

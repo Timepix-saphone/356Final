@@ -39,73 +39,104 @@ if (array_key_exists('user_id', $_SESSION)) {
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $pageTitle ?></title>
-    <link href="../css/main.css"
+    <title><?php echo $pageTitle; ?></title>
+    <link href="https://nrs-projects.humboldt.edu/~st10/styles/normalize.css"
           type="text/css" rel="stylesheet" />
-    <link href="../css/styles.css"
+    <link href="https://nrs-projects.humboldt.edu/~jb715/woops/styles.css"
           type="text/css" rel="stylesheet" />
 </head>
 <body>
-<!-- Header -->
-<?php
-    if (array_key_exists('username', $_SESSION)) {
-        ?>
-            <?=makeHeader("loggedIn");?>
-        <?php
-    } else {
-    ?>
-            <?=makeHeader("loggedOut");?>
-    <?php   
-    }
-?>
 
     <!-- Main page wrapper -->
     <div class="page-container">
 
+        <!-- Site header -->
+        <header class="site-header">
+            <div class="logo-area">
+                <h1 class="site-logo">Burvents</h1>
+            </div>
+
+            <div class="account-actions">
+                <!-- Future PHP login/account status can go here -->
+                <a href="create-account.php" class="btn btn-primary">Create Account</a>
+            </div>
+        </header>
+
         <!-- Navigation / page intro -->
         <main class="main-content">
             <section class="hero-section">
+                <h2>Booth Explore</h2>
+                <p>
+                    Here are some booths that we are going to have at that **REPLACE WITH PHP events**!
+                </p>
+                
+                <section class="info-section">
+                    <p>We are going to be having **PHP CALL TO TOTAL AMOUNT OF BOOTHS** at the event!</p>
+                
+                </section>
                 
             </section>
 
-            <!-- Main role / feature navigation based on your wireframe -->
-            <section class="dashboard-grid">
-                <article class="dashboard-card">
-                    <h1>Avialable Booths </h1>  
-                    <?php
-                        foreach($booth as $event)
-                        {
-                            ?>
-                            <h2>Booth Building: <?= htmlentities($event['booth_building']) ?></h2>
-                            <p>Booth Number: <?=  htmlentities($event['booth_number'])?></p>
-                            <?php
-                        }
-                    ?>
-                </article>
+            <section class = "register-event-btn">
 
+                <a href="event-registration.php" class="btn">Register for the Event</a>
             </section>
 
-            <!-- Placeholder for announcements or future dynamic content -->
-            <section class="info-section">
+
+
+            <!-- Main role / feature call's to sql in a table, should have the table grow with the events, will add more css later down week -->
+            <section class="event-table">
                 
+                <!-- added this inline just for display, plz remove later-->
+                <table border="1" cellpadding="8" cellspacing="0">
+                    
+
+
+                    <thead>
+                        <tr>
+                            <th>Booth ID</th>
+                            <th>Booth Building</th>
+                            <th>Booth Event</th>
+                            <th>Booth Number</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <!-- Ideally this would be a call to name-->
+                            <td>**PHP CALL TOO BOOTH ID**</td>
+                            <td><?= htmlentities($event['booth_building']) ?></td>
+
+                            <td>**PHP CALL TOO BOOTH EVENT**</td>
+                            <td>?=  htmlentities($event['booth_number'])?></td>
+                        </tr>
+
+                    </tbody>
+                
+                </table>
+            
             </section>
+
+
         </main>
 
         <!-- Footer -->
         <footer class="site-footer">
-            <?php
-                include_once '../helpers/footer.html';
-            ?>
+            <nav class="footer-nav">
+                <a href="#">Feedback</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Social Media</a>
+            </nav>
         </footer>
 
     </div>
 
 </body>
 </html>
-
