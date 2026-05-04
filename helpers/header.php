@@ -7,10 +7,12 @@ function makeHeader($type) {
 $header = '
 <header class="site-header">
     <div class="logo-area">
-        <h1 class="site-logo">Burvents</h1>
+        <a href="../index.php" class="site-logo">
+        <img src="../css/assets/calendar-dots.svg" alt="" class="site-logo-icon" />
+        <h1 class="site-logo-text">Burvents</h1>
+        </a>
     </div>
     <nav class="account-actions" id="nav-header">
-        <li> <a href="../index.php"> Home </a> </li>
         <li> <a href="../pages/account.php"> Account </a> </li>
         <li> <a href="../helpers/logout.php"> Logout </a> </li>
     </nav>
@@ -21,10 +23,12 @@ else if ($type == "loggedOut") {
     $header = '
     <header class="site-header">
     <div class="logo-area">
-        <h1 class="site-logo">Burvents</h1>
+        <a href="../index.php" class="site-logo">
+        <img src="../css/assets/calendar-dots.svg" alt="" class="site-logo-icon" />
+        <h1 class="site-logo-text">Burvents</h1>
+        </a>
     </div>
     <nav class="account-actions" id="nav-header">
-        <li> <a href="../index.php"> Home </a> </li>
         <li> <a href="../pages/account.php"> Account </a> </li>
         <li> <a href="../pages/login.php"> Log In </a> </li>
     </nav>

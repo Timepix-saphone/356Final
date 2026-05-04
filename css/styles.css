@@ -26,15 +26,40 @@ body {
 }
 
 .site-logo {
-    font-size: 1.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap:0.5rem;
+    color: white;
+}
+
+.site-logo:hover .site-logo-text {
+    color:#6c63ff;
+
+}
+
+.site-logo-icon{
+    height:3rem;
+    width: auto;
+    filter: brightness(0) invert(1);
+    
+}
+
+.site-logo-text{
+    font-size: 3rem;
+    line-height: 1;
+    text-decoration: none;
 }
 
 .account-actions a {
-    background-color: #6c63ff;
-    color: white;
+    background-color: #96F687;
+    color: #393939;
     padding: 0.6rem 1rem;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 999px;
+}
+
+.account-actions li:hover a{
+    color: #6c63ff;
 }
 
 .main-content {
@@ -57,11 +82,18 @@ body {
     background-color: #6c63ff;
     color: white;
     padding: 1.5rem;
-    border-radius: 12px;
+    border-radius: 25px;
 }
 
 .dashboard-card h3 {
+    font-size: 1.80rem;
+    text-align: center;
     margin-bottom: 0.75rem;
+}
+.dashboard-card:hover h3 {
+    color: #96F687;
+    font-weight: bold;
+    transition:
 }
 
 .dashboard-card p {
